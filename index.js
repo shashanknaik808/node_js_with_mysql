@@ -79,3 +79,18 @@ app.get('/getemployee', (req, res) => {
         res.send('Employee Details Fetched')
     })
 });
+
+app.get('/updateemployee/:id', (req, res) => {
+
+    let newName = 'Donquixote Doflamingo';
+
+    let sql = `UPDATE employee SET name='${newName}'WHERE id=${req.params.id}`;
+
+    db.query(sql, (error) => {
+        if (error) {
+            return error
+        }
+
+        res.send('Employee updated');
+    })
+});
