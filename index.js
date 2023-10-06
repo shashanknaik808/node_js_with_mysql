@@ -50,3 +50,19 @@ app.get('/createemployee', (req, res) => {
         res.send('Employee Table created')
     });
 });
+
+app.get('/employee1', (req, res) => {
+
+    let post = { name: "Doflamingo", designation: "Heavenly Demon" };
+
+    let sql = 'INSERT INTO employee SET ?';
+
+    let query =
+
+        db.query(sql, post, error => {
+            if (error) {
+                return error
+            }
+            res.send('Employee added');
+        })
+})
