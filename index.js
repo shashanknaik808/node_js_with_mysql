@@ -8,17 +8,24 @@ const db = mysql.createConnection({
     password: "root123"
 });
 
-const app = express();
+
 
 db.connect(err => {
     if (err) console.log("There is an error while connecting" + err);
-
+    
     app.listen(4000);
-
+    
     console.log
-        ("DB Connected" + db.threadId);
-
+    ("DB Connected" + db.threadId);
+    
     console.log
-        ("Server started at port 4000");
+    ("Server started at port 4000");
+    
+});
 
+
+const app = express();
+
+app.get('/createdb', (req, res) => {
+    
 });
