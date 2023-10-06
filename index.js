@@ -5,7 +5,8 @@ const express = require('express');
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "root123"
+    password: "root123",
+    database: "nodemysql"
 });
 
 
@@ -35,5 +36,17 @@ app.get('/createdb', (req, res) => {
             return error
         }
         res.send('Database created')
+    });
+});
+
+app.get('/createemployee', (req, res) => {
+
+    let sql = 'CREATE TABLE employee(id int AUTO_INCREMENT, name VARCHAR(50), designation VARCHAR(50), PRIMARY KEY(id))';
+
+    db.query(sql, error => {
+        if (error) {
+            return error
+        }
+        res.send('Employee Table created')
     });
 });
